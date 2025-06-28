@@ -6,3 +6,18 @@
 .container::-webkit-scrollbar {
   display: none;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.dark input::placeholder {
+  color: #cbd5e1;
+  opacity: 1;
+}
+.light input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
