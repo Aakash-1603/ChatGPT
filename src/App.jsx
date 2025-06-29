@@ -95,7 +95,7 @@ function App() {
     <div className={darkMode ? "dark" : "light"}>
       <div
         className={`grid grid-cols-1 md:grid-cols-5 h-screen ${
-          darkMode ? "bg-zinc-800" : "bg-zinc-100"
+          darkMode ? "bg-zinc-800 text-white" : "bg-zinc-100 text-black"
         }`}
       >
         <div
@@ -158,7 +158,7 @@ function App() {
                     className={`absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full shadow transition-colors border focus:outline-none focus:ring-2 ${
                       darkMode
                         ? "bg-red-500 hover:bg-red-600 text-white border-zinc-800 focus:ring-red-400"
-                        : "bg-red-400 hover:bg-red-500 text-white border-zinc-300 focus:ring-red-300"
+                        : "bg-red-400 hover:bg-red-500 text-black border-zinc-300 focus:ring-red-300"
                     }`}
                     title="Delete chat"
                     onClick={(e) => {
@@ -253,7 +253,11 @@ function App() {
             darkMode ? "bg-zinc-800" : "bg-zinc-50"
           }`}
         >
-          <div className="flex-1 overflow-y-auto text-center container pt-6 md:pt-10 scrollbar-hide px-1 md:px-0">
+          <div
+            className={`flex-1 overflow-y-auto text-center container pt-6 md:pt-10 scrollbar-hide px-1 md:px-0  ${
+              darkMode ? "bg-zinc-800 text-white" : "bg-zinc-50 text-black"
+            }`}
+          >
             <ul>
               {(() => {
                 const groups = [];
@@ -270,14 +274,19 @@ function App() {
                             className={`text-right ${
                               darkMode
                                 ? "text-white bg-zinc-900 border-zinc-700"
-                                : "text-zinc-800 bg-zinc-100 border-zinc-300"
+                                : "text-[#6d28d9] bg-zinc-100 border-zinc-300"
                             } border-4 mb-2 px-7 py-4 min-w-[120px] max-w-[80%] w-fit shadow-2xl rounded-[2.5rem] rounded-br-[3rem] rounded-tl-[3rem] ring-2 ${
                               darkMode
                                 ? "ring-zinc-700/30 ring-offset-2 ring-offset-zinc-800"
                                 : "ring-zinc-300/30 ring-offset-2 ring-offset-zinc-100"
                             } transition-all duration-300`}
+                            style={{ color: darkMode ? "#fff" : "#6d28d9" }}
                           >
-                            <Answers ans={answer[i].text} index={0} />
+                            <Answers
+                              ans={answer[i].text}
+                              index={0}
+                              darkMode={darkMode}
+                            />
                           </div>
                         </div>
                         <div className="flex flex-col gap-2 mt-2 ml-6">
@@ -285,12 +294,13 @@ function App() {
                             className={`text-left ${
                               darkMode
                                 ? "text-white bg-zinc-900 border-zinc-700"
-                                : "text-zinc-800 bg-zinc-100 border-zinc-300"
+                                : "text-[#18181b] bg-zinc-100 border-zinc-300"
                             } border-4 px-7 py-4 min-w-[120px] max-w-[80%] w-fit shadow-2xl rounded-[2.5rem] rounded-bl-[3rem] rounded-tr-[3rem] mb-1 ring-2 ${
                               darkMode
                                 ? "ring-zinc-700/30 ring-offset-2 ring-offset-zinc-800"
                                 : "ring-zinc-300/30 ring-offset-2 ring-offset-zinc-100"
                             } transition-all duration-300`}
+                            style={{ color: darkMode ? "#fff" : "#18181b" }}
                           >
                             {answer[i + 1].text.map((ansItem, ansIndex) => (
                               <Answers
@@ -301,6 +311,7 @@ function App() {
                                 }
                                 index={ansIndex}
                                 key={`a-${i + 1}-${ansIndex}`}
+                                darkMode={darkMode}
                               />
                             ))}
                           </div>
@@ -317,8 +328,8 @@ function App() {
           <div
             className={`flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center p-2 md:p-4 w-full md:w-1/2 m-auto rounded-3xl md:rounded-4xl border mb-6 md:mb-10 ${
               darkMode
-                ? "bg-zinc-900 text-white border-zinc-700"
-                : "bg-zinc-100 text-zinc-800 border-zinc-300"
+                ? "bg-zinc-900 text-white border-purple-600 shadow-[0_4px_24px_0_rgba(109,40,217,0.25)]"
+                : "bg-zinc-100 text-zinc-800 border-purple-600 shadow-[0_8px_32px_0_rgba(24,24,27,0.25)]"
             }`}
             style={{ maxWidth: "100vw" }}
           >

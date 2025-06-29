@@ -4,16 +4,13 @@ import "prismjs/themes/prism-tomorrow.css";
 import { CheckHeading } from "./Helper";
 import { ReplceHeading } from "./Helper";
 
-const Answers = ({ ans, totalres, index }) => {
-  const [heading, setheading] = useState(false);
+const Answers = ({ ans, darkMode }) => {
   const [answer, setanswer] = useState(ans);
 
   useEffect(() => {
     if (CheckHeading(ans)) {
-      setheading(true);
       setanswer(ReplceHeading(ans));
     } else {
-      setheading(false);
       setanswer(ans);
     }
   }, [ans]);
@@ -24,7 +21,11 @@ const Answers = ({ ans, totalres, index }) => {
 
   // Enhanced code block parser: supports ```lang\ncode...```
   function renderAnswerParts(text) {
-    if (typeof text !== "string") return <span>{text}</span>;
+    const forceStyle = {
+      color: darkMode ? "#fff" : "#18181b",
+      fontWeight: 500,
+    };
+    if (typeof text !== "string") return <span style={forceStyle}>{text}</span>;
     const parts = [];
     // Regex: match ```lang\ncode...```
     const regex = /```([a-zA-Z0-9]*)\s*([\s\S]*?)```/g;
@@ -38,7 +39,8 @@ const Answers = ({ ans, totalres, index }) => {
           parts.push(
             <p
               key={key++}
-              className="mb-2 text-base text-white whitespace-pre-line"
+              style={forceStyle}
+              className={`mb-2 text-base whitespace-pre-line`}
             >
               {normalText}
             </p>
@@ -67,7 +69,8 @@ const Answers = ({ ans, totalres, index }) => {
         parts.push(
           <p
             key={key++}
-            className="mb-2 text-base text-white whitespace-pre-line"
+            style={forceStyle}
+            className={`mb-2 text-base whitespace-pre-line`}
           >
             {normalText}
           </p>
@@ -78,17 +81,7 @@ const Answers = ({ ans, totalres, index }) => {
     return parts;
   }
 
-  return (
-    <>
-      {index == 0 && totalres > 1 ? (
-        <>{renderAnswerParts(answer)}</>
-      ) : heading ? (
-        <>{renderAnswerParts(answer)}</>
-      ) : (
-        <>{renderAnswerParts(answer)}</>
-      )}
-    </>
-  );
+  return <>{renderAnswerParts(answer)}</>;
 };
 
 export default Answers;
