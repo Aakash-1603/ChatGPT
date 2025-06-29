@@ -226,7 +226,7 @@ function App() {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71M12 7a5 5 0 100 10 5 5 0 000-10z"
+                  d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"
                 />
               </svg>
             ) : (
@@ -241,7 +241,7 @@ function App() {
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"
+                  d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71M12 7a5 5 0 100 10 5 5 0 000-10z"
                 />
               </svg>
             )}
